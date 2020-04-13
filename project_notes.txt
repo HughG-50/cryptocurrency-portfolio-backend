@@ -1,0 +1,67 @@
+**Remember to always run bundle install once you've made a new Rails app
+Webpack
+    -Gem that allows us to use React with Rails
+
+Create new database
+    -rails db:create
+
+Creating our data model
+    -all we need for now is a currency model with some attributes for each cryptocurrency
+    -adding all fields for what we are going to need in the database
+        -name
+        -description
+        -maxsupply
+        -currency_symbol
+        **May need a field for storing icons/logos of the currency?
+    rails g model Currency name description maxsupply:bigint currency_sybol slug
+        -slug is a thing that lets us have more user friendly/readable/SEO friendly URLs
+
+What is a database migration?
+    -Database migration tack granular changes to your database schema
+        Database Schema 
+            -the logical configuration of all or part of a relational database
+            -i.e. indicates how entities that make up the database relate to one another
+                -including tables, views, stored procedures and more
+            -i.e. defines standard format that our database will appear as
+    -basically allows us to have git like rollback capability when we make schema changes
+
+    rake db:migrate or rails db:migrate
+        -updated/made our Currency table in our database 
+
+    Rollback to fix a mistake
+        rails db:rollback
+
+Database seed file 
+    -This file should contain all the record creation needed to seed the database with its default values.
+    -The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+
+    rails db:seed
+
+Looking at app through console
+    rails c 
+
+
+Currency Controller
+    Root path
+        -root path is essentially where everything is stored
+        -base root where everything else is derived from 
+
+        root 'currencies#index'
+        -sets the root path to our Currency index page
+
+    rake routes
+        -tells us what all of our routes are
+
+Linking React - hello_react.jsx
+    -All files in the new app/javascript/packs directory are compiled by Webpack.
+    There’s one example React file hello_react.jsx, which defines a simple functional React component called Hello 
+    that can display the words “Hello React!” on a page. 
+    It can also take a prop called name to display it instead of the word “React”.
+
+    -We can use this component on any page by linking it with the javascript_pack_tag helper method.
+
+        -Run this example by adding <%= javascript_pack_tag 'hello_react' %> to the head of your layout file,
+        like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
+        of the page.
+
+    -->put in root path (index.html.erb in views) - entry point to inject React into our Rails app

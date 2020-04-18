@@ -1,3 +1,20 @@
+Linking API Keys
+    -What people used to do, and still can do this way is put all keys in .env 
+    file. This is stored locally on machine.
+    -To then deploy - e.g. on Heroku or AWS, you have to add all those keys to the .env
+    of that server
+        -this isn't ideal because as humans we forget to do stuff
+    -credentials.yml.enc 
+        -open it decrypted
+            EDITOR=code --wait" rails credentials:edit
+        -once exiting the file it saves and encrypts it 
+
+    -yml 
+        -form of markup language
+        -key:value
+
+
+
 **Remember to always run bundle install once you've made a new Rails app
 Webpack
     -Gem that allows us to use React with Rails
@@ -13,7 +30,7 @@ Creating our data model
         -maxsupply
         -currency_symbol
         **May need a field for storing icons/logos of the currency?
-    rails g model Currency name description maxsupply:bigint currency_sybol slug
+    rails g model Currency name description maxsupply:bigint currency_symbol slug
         -slug is a thing that lets us have more user friendly/readable/SEO friendly URLs
 
 What is a database migration?

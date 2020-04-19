@@ -8,7 +8,8 @@ class Currency < ApplicationRecord
 
         url = 'https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
         # Need to figure out how to set and retrieve ENV variable for API KEY
-        request = HTTParty.get(url, :query => { :slug => self.slug }, :headers => { 'content-type': 'application/json', 'X-CMC_PRO_API_KEY': API_KEY })
-        response = JSON.parse(request.body)
+        #request = HTTParty.get(url, :query => { :slug => self.slug }, :headers => { 'content-type': 'application/json', 'X-CMC_PRO_API_KEY': ENV['CMC_TEST_API_KEY'] })
+        request = HTTParty.get(url, :query => { :symbol => self.currency_symbol }, :headers => { 'content-type': 'application/json', 'X-CMC_PRO_API_KEY': ENV['CMC_TEST_API_KEY'] })
+        response = JSON.parse(request.body)['data'][self.currency_symbol]['quote']['USD']['price']
     end
 end

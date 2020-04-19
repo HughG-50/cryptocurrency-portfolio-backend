@@ -13,6 +13,41 @@ Linking API Keys
         -form of markup language
         -key:value
 
+    Three main options for using environment variables:
+    http://railsapps.github.io/rails-environment-variables.html
+        1. Set env variables on local machine 
+            -set Unix env variables 
+            -then e.g. in ~/.bashrc file add export GMAIL_USERNAME="myname@gmail.com"
+        2. Use the Figaro Gem
+            -gem 'figaro' --> bundle install 
+            -use generator
+                bundle exec figaro install 
+            -generator creates config/application.yml file and adds to .gitignore
+            -can add environment variables as key/value pairs to config/application.yml
+            -use like ENV["GMAIL_USERNAME"]
+            -variables in the config/application.yml will override environment variables est in the Unix shell
+        3. Use local_env.yml file (more manual way of doing option 2)
+            -create a config/local_env.yml file
+            -set .gitignore /config/local_env.yml
+            -find this line of code in the config/application.rb file 
+            
+            # Version of your assets, change this if you want to expire all your assets
+                config.assets.version = '1.0'
+            
+            -i.e. in Rails 5.2.4.2 that line looks like this
+            
+            class Application < Rails::Application
+            # Initialize configuration defaults for originally generated Rails version.
+                config.load_defaults 5.2
+
+            -And then add the following to the config/application.rb file
+            
+            config.before_configuration do
+                env_file = File.join(Rails.root, 'config', 'local_env.yml')
+                YAML.load(File.open(env_file)).each do |key, value|
+                    ENV[key.to_s] = value
+                end if File.exists?(env_file)
+            end
 
 
 **Remember to always run bundle install once you've made a new Rails app

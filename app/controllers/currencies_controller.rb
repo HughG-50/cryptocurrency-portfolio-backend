@@ -4,8 +4,6 @@ class CurrenciesController < ApplicationController
     end
 
     def search 
-        # Comparing the lower case names of what people send through searching for a cryptocurrency to the currencies in our database
-        @currencies = Currency.where('LOWER(name) LIKE ?', "%#{params[:search].downcase}%")
         # Returning/sending back JSON of all the cryptocurrencies that relate to that users search
         render json: { currencies: @currencies }
     end
@@ -23,7 +21,13 @@ class CurrenciesController < ApplicationController
     end
 
     private
+
     def currency 
         @currency ||= Currency.find(params[:id])
+    end
+
+    def currencies
+        # Comparing the lower case names of what people send through searching for a cryptocurrency to the currencies in our database
+        @currencies = Currency.where('LOWER(name) LIKE ?', "%#{params[:search].downcase}%")
     end
 end

@@ -136,3 +136,9 @@ Conditional assignment operator  a ||= b
 
 Hash syntax 
     -remember that {"name" => name} is equivalent to {name: name}
+
+React front-end 
+    -rails s 
+    -to run server with real time reloading, WE NEED TO OPEN ANOTHER TERMINAL, run the following
+        ./bin/webpack-dev-server
+    

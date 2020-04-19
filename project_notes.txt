@@ -117,3 +117,22 @@ Linking React - hello_react.jsx
         of the page.
 
     -->put in root path (index.html.erb in views) - entry point to inject React into our Rails app
+
+Wildcard search
+    -a wildcard is a character than can be substituted for zero or more characters in a string 
+    -commonly used for database SQl search queries
+    -an asterisk *, may be used to specify any number of characters - typically used at the end of a root word 
+        -e.g. educat* --> educate, educated, education, educational, educator 
+    -a question mark ?, may be used to represent a single character, anywhere in the word
+        -useful for when there are variable spellings for a word, and you want to search for all variants at once
+        -e.g. colo?r would return both color and colour
+
+Conditional assignment operator  a ||= b 
+    -if a is undefined or falsey(truthy and falsey is when in Ruby, JS, Python etc we are evaluating non-boolean things like a boolean) 
+    then b is not evaluated and no assignment takes place
+    -is equivalent to the following:
+        a ? a : a = b
+        if a then a else a = b end
+
+Hash syntax 
+    -remember that {"name" => name} is equivalent to {name: name}

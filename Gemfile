@@ -47,3 +47,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "httparty", "~> 0.18.1"
 
 gem "dotenv-rails", "~> 2.7"
+
+gem "rack-cors", "~> 1.1"
